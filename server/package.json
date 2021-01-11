@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./app.js",
+    "start": "nodemon ./build/server.js",
     "build": "rm -rf build/ && tsc"
   },
   "dependencies": {
@@ -16,6 +16,10 @@
     "nodemon": "^2.0.6"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "@types/express": "^4.17.9",
+    "@types/http-errors": "^1.8.0",
+    "@types/morgan": "^1.9.2",
     "@types/node": "^14.14.20"
   }
 }
