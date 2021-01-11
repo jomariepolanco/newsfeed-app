@@ -20,6 +20,15 @@ app.get('/api', function (req, res) {
 app.get('/api/users', function (req, res) {
     res.send(['Aang', 'Katara', 'Momo', 'Sokka', 'Appa']);
 });
+var news;
+var NewsAPI = require('newsapi');
+var newsapi = new NewsAPI('f96de7e3d5e04cbd9bf4bac6f180e7a8');
+newsapi.v2.topHeadlines({
+    sources: 'bbc-news, the-verge'
+}).then(function (r) { return news = r; });
+app.get('/api/news', function (req, res) {
+    res.send(news);
+});
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(http_errors_1.default(404));

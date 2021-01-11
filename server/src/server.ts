@@ -21,6 +21,16 @@ app.get('/api/users', (req, res) => {
   res.send(['Aang', 'Katara', 'Momo', 'Sokka', 'Appa']);
 });
 
+let news: any;
+const NewsAPI = require('newsapi')
+const newsapi = new NewsAPI('f96de7e3d5e04cbd9bf4bac6f180e7a8')
+newsapi.v2.topHeadlines({
+    sources: 'bbc-news, the-verge'
+}).then((r: any) => news = r)
+
+app.get('/api/news', (req, res) => {
+    res.send(news)
+})
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
