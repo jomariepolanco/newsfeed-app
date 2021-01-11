@@ -20,20 +20,34 @@ app.get('/api', (req, res) => {
   res.send(`${new Date()}`);
 });
 
+
+// users
 app.get('/api/users', (req, res) => {
   res.send(['Aang', 'Katara', 'Momo', 'Sokka', 'Appa']);
 });
 
-let news: any;
+// articles
+let headlineNews: any;
 const NewsAPI = require('newsapi')
 const newsapi = new NewsAPI(apiKey)
 newsapi.v2.topHeadlines({
     sources: 'bbc-news, the-verge'
-}).then((r: any) => news = r)
+}).then((r: any) => headlineNews = r)
 
-app.get('/api/news', (req, res) => {
-    res.send(news)
+app.get('/api/top_headlines', (req, res) => {
+    res.send(headlineNews.articles)
 })
+
+let allNews: any;
+const everythingNews = new NewsAPI(apiKey)
+everythingNews.v2.everything({
+    sources: 'bbc-news, the-verge'
+}).then((r: any) => allNews = r)
+
+app.get('/api/all_news', (req, res) => {
+    res.send(allNews.articles)
+})
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -19,17 +19,27 @@ app.set('view engine', 'html');
 app.get('/api', function (req, res) {
     res.send("" + new Date());
 });
+// users
 app.get('/api/users', function (req, res) {
     res.send(['Aang', 'Katara', 'Momo', 'Sokka', 'Appa']);
 });
-var news;
+// articles
+var headlineNews;
 var NewsAPI = require('newsapi');
 var newsapi = new NewsAPI(apiKey);
 newsapi.v2.topHeadlines({
     sources: 'bbc-news, the-verge'
-}).then(function (r) { return news = r; });
-app.get('/api/news', function (req, res) {
-    res.send(news);
+}).then(function (r) { return headlineNews = r; });
+app.get('/api/top_headlines', function (req, res) {
+    res.send(headlineNews.articles);
+});
+var allNews;
+var everythingNews = new NewsAPI(apiKey);
+everythingNews.v2.everything({
+    sources: 'bbc-news, the-verge'
+}).then(function (r) { return allNews = r; });
+app.get('/api/all_news', function (req, res) {
+    res.send(allNews.articles);
 });
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
