@@ -5,6 +5,9 @@ import logger from 'morgan';
 import * as bodyParser from 'body-parser'
 
 
+require('dotenv').config()
+const apiKey = process.env.API_KEY
+
 const app = express();
 const port = 8080
 app.use(logger('dev'));
@@ -23,7 +26,7 @@ app.get('/api/users', (req, res) => {
 
 let news: any;
 const NewsAPI = require('newsapi')
-const newsapi = new NewsAPI('f96de7e3d5e04cbd9bf4bac6f180e7a8')
+const newsapi = new NewsAPI(apiKey)
 newsapi.v2.topHeadlines({
     sources: 'bbc-news, the-verge'
 }).then((r: any) => news = r)

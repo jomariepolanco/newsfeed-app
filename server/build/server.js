@@ -7,6 +7,8 @@ var http_errors_1 = __importDefault(require("http-errors"));
 var express_1 = __importDefault(require("express"));
 var cookie_parser_1 = __importDefault(require("cookie-parser"));
 var morgan_1 = __importDefault(require("morgan"));
+require('dotenv').config();
+var apiKey = process.env.API_KEY;
 var app = express_1.default();
 var port = 8080;
 app.use(morgan_1.default('dev'));
@@ -22,7 +24,7 @@ app.get('/api/users', function (req, res) {
 });
 var news;
 var NewsAPI = require('newsapi');
-var newsapi = new NewsAPI('f96de7e3d5e04cbd9bf4bac6f180e7a8');
+var newsapi = new NewsAPI(apiKey);
 newsapi.v2.topHeadlines({
     sources: 'bbc-news, the-verge'
 }).then(function (r) { return news = r; });
