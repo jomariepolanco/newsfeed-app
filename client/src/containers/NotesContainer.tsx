@@ -1,10 +1,10 @@
-import { Button } from '@material-ui/core';
-import React from 'react'
+import { Button, Grid } from '@material-ui/core';
+import React, {useEffect, useState} from 'react'
 import CreateNoteForm from '../components/CreateNoteForm';
 import NoteCard from '../components/NoteCard'
 
 export default function NotesContainer() {
-    const [notes, setNotes] = React.useState([]);
+    const [notes, setNotes] = useState([]);
 
     const getNotes = () => {
       fetch('/api/notes')
@@ -12,22 +12,18 @@ export default function NotesContainer() {
         .then((res) => setNotes(res));
     };
 
-    const notesClickHandler = () => {
+    useEffect(() => {
         getNotes()
-    }
+    }, [])
 
     const renderNoteCards = () => {
-        [...notes].map(note => <NoteCard note={note} />)
-    }
-
-    const toggleModal = () => {
-        console.log('toggle')
+        return [...notes].map(note => <Grid item xs={4} spacing={2}><NoteCard note={note} /></Grid>)
     }
   
+    console.log(notes)
     return (
         <div>
-            <Button variant="outlined" color="primary" onClick={notesClickHandler}>See Notes</Button>
-            {renderNoteCards}
+            {renderNoteCards()}
             <CreateNoteForm />
         </div>
     )
