@@ -1,4 +1,7 @@
 import React from 'react';
+import Navbar from './components/Navbar';
+import NewsContainer from './containers/NewsContainer';
+import NotesContainer from './containers/NotesContainer';
 
 function App() {
   const [data, setData] = React.useState("null");
@@ -12,6 +15,9 @@ function App() {
     <div className="App">
         <button onClick={getData}>Click Me For Data</button>
         {data}
+        <Navbar />
+        <NewsContainer />
+        <NotesContainer />
     </div>
   );
 }
