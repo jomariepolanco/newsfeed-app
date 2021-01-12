@@ -75,7 +75,7 @@ function App() {
             <Paper className={classes.paper}>
               <Route path='/news' render={() => <NewsContainer news={news}/>} />
             </Paper>
-          </Grid>
+           </Grid>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
               <Route path='/notes' component={NotesContainer}/>

@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
     gridList: {
         width: 1000,
-        height: 450
+        height: 750
     },
 })
 )
