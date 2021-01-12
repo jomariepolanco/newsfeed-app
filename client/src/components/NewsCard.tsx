@@ -18,10 +18,6 @@ interface Props {
 
 const NewsCard: React.FC<Props> = ({news}) => {
 
-    const toggleModal = () => {
-        console.log('toggle')
-    }
-
     const classes = useStyles()
     return (
         <div>
