@@ -1,10 +1,7 @@
 import React from 'react'
 
-interface Props {
-    getNews: () => void;
-}
 
-const SearchForm: React.FC<Props> = ({getNews}) => {
+const SearchForm = () => {
     return (
         <div>
             search form

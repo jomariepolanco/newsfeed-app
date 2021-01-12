@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         backgroundColor: theme.palette.background.paper
     },
     gridList: {
-        width: 500,
+        width: 1000,
         height: 450
     },
 })
@@ -45,12 +45,14 @@ export default function NewsContainer() {
     const classes = useStyles()
 
     return (
+        <>
+        <SearchForm />
         <div className={classes.root}>
-            <SearchForm />
             <GridList cellHeight={200} spacing={1} className={classes.gridList}>
                 {renderNewsCards()}
 
             </GridList>
         </div>
+        </>
     )
 }
