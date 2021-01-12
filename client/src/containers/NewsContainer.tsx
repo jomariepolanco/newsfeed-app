@@ -1,5 +1,5 @@
 import { createStyles, GridList, GridListTile, makeStyles, Theme } from '@material-ui/core';
-import React from 'react'
+import React, { Component } from 'react'
 import NewsCard from '../components/NewsCard'
 import SearchForm from '../components/SearchForm'
 
@@ -15,35 +15,34 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         width: 500,
         height: 450
     },
-    titleBar: {
-        background: 'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,' + 'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%'
-    },
-    icon: {
-        color: 'white',
-    }
 })
 )
 
 export default function NewsContainer() {
 
-    const [news, setNews] = React.useState();
+    const [news, setNews] = React.useState<string[]>([]);
 
     const getNews = () => {
         fetch('/api/all_news')
-            .then((result) => result.text())
+            .then((result) => result.json())
             .then((response) => setNews(response));
     };
-    getNews()
 
     const renderNewsCards = () => {
-        return [...news].map((article, idx) => <GridListTile key={article.title}><NewsCard key={idx} news={article}/></GridListTile>)
+        return [...news].map((article, idx) => {
+            return(
+                <GridListTile key={idx}>
+                    <NewsCard key={idx} news={article}/>
+                </GridListTile>
+            )
+    })
     }
 
     const classes = useStyles()
 
     return (
         <div className={classes.root}>
-            <SearchForm />
+            <SearchForm getNews={getNews}/>
             <GridList cellHeight={200} spacing={1} className={classes.gridList}>
                 {renderNewsCards()}
 
