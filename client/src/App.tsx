@@ -5,6 +5,8 @@ import NotesContainer from './containers/NotesContainer';
 import SearchForm from './containers/SearchForm'
 import 'fontsource-roboto';
 import { createStyles, Grid, makeStyles, Paper, Theme } from '@material-ui/core';
+import LoginForm from './components/LoginForm';
+import Signup from './components/Signup';
 
 const useStyles = makeStyles((theme: Theme) => 
   createStyles({
@@ -59,6 +61,8 @@ function App() {
   return (
     <div className={classes.root}>
         <Navbar />
+        <LoginForm handleLogin={handleLogin} />
+        <Signup handleSignup={handleSignup} />
         <Grid container spacing={0}>
           <Grid item md={12}>
             <Paper className={classes.paper}>
