@@ -1,8 +1,10 @@
 import { UserController } from "./controller/UserController";
 import {NoteController} from './controller/NoteController'
+import { NewsController } from "./controller/NewsController";
 
 
 export const Routes = [
+    // Users
     {
         method: 'get',
         route: '/api/users',
@@ -18,6 +20,7 @@ export const Routes = [
         route: '/api/users/',
         controller: UserController, action: 'save'
     },
+    // Notes
     {
         method: 'get',
         route: '/api/notes',
@@ -37,5 +40,41 @@ export const Routes = [
         method: 'delete',
         route: '/api/notes/:id',
         controller: NoteController, action: 'remove'
+    },
+    // News
+    {
+        method: 'get',
+        route: '/api/news/business',
+        controller: NewsController, action: 'business'
+    },
+    {
+        method: 'get',
+        route: '/api/news/entertainment',
+        controller: NewsController, action: 'entertainment'
+    },
+    {
+        method: 'get',
+        route: '/api/news/general',
+        controller: NewsController, action: 'general'
+    },
+    {
+        method: 'get',
+        route: '/api/news/health',
+        controller: NewsController, action: 'health'
+    },
+    {
+        method: 'get',
+        route: '/api/news/science',
+        controller: NewsController, action: 'science'
+    },
+    {
+        method: 'get',
+        route: '/api/news/sports',
+        controller: NewsController, action: 'sports'
+    },
+    {
+        method: 'get',
+        route: '/api/news/technology',
+        controller: NewsController, action: 'technology'
     }
 ]

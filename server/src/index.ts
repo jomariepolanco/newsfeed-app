@@ -34,26 +34,26 @@ createConnection().then(async connection => {
     })
 
     // articles
-let headlineNews: any;
-const NewsAPI = require('newsapi')
-const newsapi = new NewsAPI(apiKey)
-newsapi.v2.topHeadlines({
-    sources: 'bbc-news, the-verge'
-}).then((r: any) => headlineNews = r)
+// let headlineNews: any;
+// const NewsAPI = require('newsapi')
+// const newsapi = new NewsAPI(apiKey)
+// newsapi.v2.topHeadlines({
+//     sources: 'bbc-news, the-verge'
+// }).then((r: any) => headlineNews = r)
 
-app.get('/api/top_headlines', (req, res) => {
-    res.send(headlineNews.articles)
-})
+// app.get('/api/top_headlines', (req, res) => {
+//     res.send(headlineNews.articles)
+// })
 
-let allNews: any;
-const everythingNews = new NewsAPI(apiKey)
-everythingNews.v2.everything({
-    sources: 'bbc-news, the-verge'
-}).then((r: any) => allNews = r)
+// let allNews: any;
+// const everythingNews = new NewsAPI(apiKey)
+// everythingNews.v2.everything({
+//     sources: 'bbc-news, the-verge'
+// }).then((r: any) => allNews = r)
 
-app.get('/api/all_news', (req, res) => {
-    res.send(allNews.articles)
-})
+// app.get('/api/all_news', (req, res) => {
+//     res.send(allNews.articles)
+// })
 
 
 // catch 404 and forward to error handler
