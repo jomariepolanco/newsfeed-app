@@ -1,6 +1,6 @@
 import { Button, FormControl, FormLabel, RadioGroup } from '@material-ui/core'
 import React, { ChangeEvent, useState } from 'react'
-import CheckBoxes from '../components/CheckBoxes'
+import CheckBoxes from './CheckBoxes'
 
 interface Props {
     setCategory: (value: string) => void;
@@ -26,11 +26,11 @@ const SearchForm: React.FC<Props> = ({setCategory}) => {
             <>
             <form onSubmit={submitHandler}>
                 <FormControl component="fieldset">
-                    <FormLabel component="legend">Choose a Category</FormLabel>
+                    <FormLabel style={{color: '#6e22b4', fontWeight: 'bolder'}}component="legend">Choose a Category</FormLabel>
                     <RadioGroup row value={value} onChange={changeHandler} aria-label="category">
                         {renderCheckBoxes()}
                     </RadioGroup>
-                    <Button type="submit" variant="outlined" color="primary">Submit</Button>
+                    <Button size={'large'} style={{color: '#ffffff', backgroundColor: '#9147ff'}}type="submit" variant="outlined">Submit</Button>
                 </FormControl>
             </form>
             </>

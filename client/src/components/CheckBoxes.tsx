@@ -11,7 +11,7 @@ interface Props {
 const CheckBoxes: React.FC<Props> = ({category, setCategory}) => {
 
     return (
-        <FormControlLabel value={category} control={<Radio color="primary"/>} label={category} labelPlacement="end" />
+        <FormControlLabel style={{color: 'grey'}} value={category} control={<Radio style={{color: '#9147ff'}}/>} label={category} labelPlacement="end" />
     )
 }
 

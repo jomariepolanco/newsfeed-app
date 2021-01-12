@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Navbar from './components/Navbar';
 import NewsContainer from './containers/NewsContainer';
 import NotesContainer from './containers/NotesContainer';
-import SearchForm from './containers/SearchForm'
+import SearchForm from './components/SearchForm'
 import 'fontsource-roboto';
 import { createStyles, Grid, makeStyles, Paper, Theme } from '@material-ui/core';
 import LoginForm from './components/LoginForm';
