@@ -5,7 +5,7 @@ import React from 'react'
 const useStyles = makeStyles((theme: Theme) => 
     createStyles({
         root: {
-            flexGrow: 1
+            flexGrow: 1,
         },
         menuButton: {
             marginRight: theme.spacing(2)
@@ -21,7 +21,7 @@ export default function Navbar() {
     const classes = useStyles()
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar style={{backgroundColor: '#9147ff'}}position="static">
                 <Toolbar variant="dense">
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         <FiberNewIcon />
