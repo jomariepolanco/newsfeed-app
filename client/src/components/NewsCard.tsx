@@ -1,9 +1,17 @@
 import React from 'react'
 
-export default function NewsCard() {
+interface Props {
+    news: string;
+}
+
+const NewsCard: React.FC<Props> = ({news}) => {
+
+    
     return (
         <div>
-            news card
+            NewsCard
         </div>
     )
 }
+
+export default NewsCard;
