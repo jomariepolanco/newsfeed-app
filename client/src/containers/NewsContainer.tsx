@@ -37,7 +37,7 @@ const NewsContainer: React.FC<Props> = ({news}) => {
 
     return ( 
         <div className={classes.root}>
-            <GridList cellHeight={400} spacing={1} className={classes.gridList}>
+            <GridList cellHeight={300} spacing={1} className={classes.gridList}>
                 {renderNewsCards()}
             </GridList>
         </div>

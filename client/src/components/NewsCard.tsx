@@ -1,13 +1,13 @@
 import { createStyles, GridListTileBar, IconButton, makeStyles } from '@material-ui/core'
-import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
+import NotificationsNoneSharpIcon from '@material-ui/icons/NotificationsNoneSharp';
 import React from 'react'
 
 const useStyles = makeStyles(() => createStyles({
     titleBar: {
-        background: 'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,' + 'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%'
+        background: '#9147ff',
     },
     icon: {
-        color: 'white',
+        color: 'rgba(255, 255, 255)',
     }
     })
 )
@@ -24,7 +24,7 @@ const NewsCard: React.FC<Props> = ({news}) => {
             <a href={news.url} target="_onblank">
                 <img src={news.urlToImage} alt={news.title} />
             </a> 
-                <GridListTileBar title={news.title} titlePosition="top" actionIcon={<IconButton aria-label={`start ${news.title}`} className={classes.icon}><NotificationsNoneOutlinedIcon/></IconButton>} actionPosition="left" className={classes.titleBar} />
+                <GridListTileBar title={news.title} titlePosition="bottom" actionIcon={<IconButton aria-label={`start ${news.title}`} className={classes.icon}><NotificationsNoneSharpIcon/></IconButton>} actionPosition="left" className={classes.titleBar} />
 
         </div>
     )
