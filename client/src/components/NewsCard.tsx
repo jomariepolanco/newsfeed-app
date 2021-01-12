@@ -1,5 +1,5 @@
 import { createStyles, GridListTileBar, IconButton, makeStyles } from '@material-ui/core'
-import StarBorderIcon from '@material-ui/icons/StarBorder'
+import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
 import React from 'react'
 
 const useStyles = makeStyles(() => createStyles({
@@ -28,7 +28,7 @@ const NewsCard: React.FC<Props> = ({news}) => {
             <a href={news.url} target="_onblank">
                 <img src={news.urlToImage} alt={news.title} />
             </a> 
-                <GridListTileBar title={news.title} titlePosition="top" actionIcon={<IconButton aria-label={`start ${news.title}`} className={classes.icon}><StarBorderIcon/></IconButton>} actionPosition="left" className={classes.titleBar} />
+                <GridListTileBar title={news.title} titlePosition="top" actionIcon={<IconButton aria-label={`start ${news.title}`} className={classes.icon}><NotificationsNoneOutlinedIcon/></IconButton>} actionPosition="left" className={classes.titleBar} />
 
         </div>
     )
