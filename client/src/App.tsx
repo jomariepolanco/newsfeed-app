@@ -50,7 +50,7 @@ const App: React.FC<Props> = ({history}) => {
         setUser(loggedInUser)
         history.push('/')
       } else {
-        alert('Wrong log in credentials')
+        alert('Please try again!')
       }
     })
   }
@@ -65,6 +65,7 @@ const App: React.FC<Props> = ({history}) => {
     })
     .then(r => r.json())
     .then(user => setUser(user))
+    history.push('/')
   }
 
   const classes = useStyles()
