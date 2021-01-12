@@ -30,7 +30,7 @@ export default function Navbar() {
                         Newsroom
                     </Typography>
                     <div>
-                        <Button href='/news' color="inherit" >News</Button>
+                        <Button href='/' color="inherit" >News</Button>
                         <Button href='/notes' color="inherit" >Notes</Button>
                         <Button href='/login' color="inherit">Login</Button>
                         <Button href='/signup' color="inherit">Sign Up</Button>

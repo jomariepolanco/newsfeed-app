@@ -7,7 +7,7 @@ import 'fontsource-roboto';
 import { createStyles, Grid, makeStyles, Paper, Theme } from '@material-ui/core';
 import LoginForm from './components/LoginForm';
 import Signup from './components/Signup';
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, RouteComponentProps,  withRouter} from 'react-router-dom'
 
 const useStyles = makeStyles((theme: Theme) => 
   createStyles({
@@ -22,7 +22,11 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-function App() {
+interface Props {
+  history: RouteComponentProps["history"];
+}
+
+const App: React.FC<Props> = ({history}) => {
   const [news, setNews] = useState("null");
   const [category, setCategory] = useState('general')
   const [user, setUser] = useState({id: 0, name: ''})
@@ -42,7 +46,12 @@ function App() {
     .then(r => r.json())
     .then(users => {
       const loggedInUser = users.find((user: {id: number, name: string}) => user.name.toLowerCase() === name.toLowerCase())
-      setUser(loggedInUser)
+      if (loggedInUser) {
+        setUser(loggedInUser)
+        history.push('/')
+      } else {
+        alert('Wrong log in credentials')
+      }
     })
   }
 
@@ -68,12 +77,12 @@ function App() {
         <Grid container spacing={0}>
           <Grid item md={12}>
             <Paper className={classes.paper}>
-              <Route path='/news' render={() => <SearchForm setCategory={setCategory}/>} />
+              <Route exact path='/' render={() => <SearchForm setCategory={setCategory}/>} />
             </Paper>
           </Grid>
           <Grid item md={12}>
             <Paper className={classes.paper}>
-              <Route path='/news' render={() => <NewsContainer news={news}/>} />
+              <Route exact path='/' render={() => <NewsContainer news={news}/>} />
             </Paper>
            </Grid>
           <Grid item xs={12}>
@@ -87,4 +96,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);
