@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import NewsContainer from './containers/NewsContainer';
 import NotesContainer from './containers/NotesContainer';
+import 'fontsource-roboto';
 
 function App() {
   const [data, setData] = React.useState("null");
