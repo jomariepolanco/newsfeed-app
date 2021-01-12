@@ -16,20 +16,12 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
 })
 )
+interface Props {
+    news: any;
+}
 
-export default function NewsContainer() {
+const NewsContainer: React.FC<Props> = ({news}) => {
 
-    const [news, setNews] = React.useState<string[]>([]);
-
-    const getNews = () => {
-        fetch('/api/news/general')
-            .then((result) => result.json())
-            .then((response) => setNews(response));
-    };
-
-    useEffect(() => {
-        getNews()
-    }, [])
 
     const renderNewsCards = () => {
         return [...news].map((article, idx) => {
@@ -38,7 +30,7 @@ export default function NewsContainer() {
                     <NewsCard key={idx} news={article}/>
                 </GridListTile>
             )
-    })
+        })
     }
 
     const classes = useStyles()
@@ -52,3 +44,5 @@ export default function NewsContainer() {
         </div>
     )
 }
+
+export default NewsContainer;

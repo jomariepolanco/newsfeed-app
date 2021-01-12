@@ -2,7 +2,11 @@ import { Button, FormControl, FormLabel, RadioGroup } from '@material-ui/core'
 import React, { ChangeEvent, useState } from 'react'
 import CheckBoxes from '../components/CheckBoxes'
 
-export default function SearchForm() {
+interface Props {
+    setCategory: (value: string) => void;
+}
+
+const SearchForm: React.FC<Props> = ({setCategory}) => {
 
     const [value, setValue] = useState('All')
 
@@ -11,19 +15,26 @@ export default function SearchForm() {
     }
 
     const renderCheckBoxes = () => {
-        return ['Business', 'Entertainment', 'General', 'Health', 'Science', 'Sports', 'Technology'].map(category => <CheckBoxes category={category} />)
+        return ['Business', 'Entertainment', 'General', 'Health', 'Science', 'Sports', 'Technology'].map(category => <CheckBoxes category={category} setCategory={setCategory}/>)
     }
     
-    console.log(value)
+    const submitHandler = (event: any) => {
+        event.preventDefault()
+        setCategory(value)
+    }
         return (
             <>
-            <FormControl component="fieldset">
-                <FormLabel component="legend">Choose a Category</FormLabel>
-                <RadioGroup row value={value} onChange={changeHandler} aria-label="category">
-                    {renderCheckBoxes()}
-                </RadioGroup>
-                <Button variant="outlined" color="primary">Submit</Button>
-            </FormControl>
+            <form onSubmit={submitHandler}>
+                <FormControl component="fieldset">
+                    <FormLabel component="legend">Choose a Category</FormLabel>
+                    <RadioGroup row value={value} onChange={changeHandler} aria-label="category">
+                        {renderCheckBoxes()}
+                    </RadioGroup>
+                    <Button type="submit" variant="outlined" color="primary">Submit</Button>
+                </FormControl>
+            </form>
             </>
         )
 }
+
+export default SearchForm;

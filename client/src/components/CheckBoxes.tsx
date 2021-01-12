@@ -4,21 +4,14 @@ import { FormControlLabel } from '@material-ui/core'
 
 interface Props {
     category: string;
+    setCategory: (value: string) => void;
 }
 
 
-const CheckBoxes: React.FC<Props> = ({category}) => {
-
-    const [selectedCategory, setSelectedCategory] = useState('all')
-
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setSelectedCategory(e.target.value)
-    }
+const CheckBoxes: React.FC<Props> = ({category, setCategory}) => {
 
     return (
-        <>
-        <FormControlLabel value={category} control={<Radio checked={selectedCategory === category} onChange={handleChange} value={category} name={category} color="primary"/>} label={category} labelPlacement="end" />
-        </>
+        <FormControlLabel value={category} control={<Radio color="primary"/>} label={category} labelPlacement="end" />
     )
 }
 
