@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import NewsContainer from './containers/NewsContainer';
 import NotesContainer from './containers/NotesContainer';
+import SearchForm from './containers/SearchForm'
 import 'fontsource-roboto';
 import { createStyles, Grid, makeStyles, Paper, Theme } from '@material-ui/core';
 
@@ -31,8 +32,13 @@ function App() {
   return (
     <div className={classes.root}>
         <Navbar />
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
+        <Grid container spacing={0}>
+          <Grid item md={12}>
+            <Paper className={classes.paper}>
+              <SearchForm />
+            </Paper>
+          </Grid>
+          <Grid item md={12}>
             <Paper className={classes.paper}>
               <NewsContainer />
             </Paper>

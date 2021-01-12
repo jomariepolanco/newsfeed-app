@@ -1,4 +1,5 @@
 import { AppBar, createStyles, IconButton, makeStyles, Theme, Toolbar, Typography } from '@material-ui/core'
+import FiberNewIcon from '@material-ui/icons/FiberNew';
 import React from 'react'
 
 const useStyles = makeStyles((theme: Theme) => 
@@ -20,10 +21,10 @@ export default function Navbar() {
             <AppBar position="static">
                 <Toolbar variant="dense">
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        Icon
+                        <FiberNewIcon />
                     </IconButton>
                     <Typography variant="h6" color="inherit">
-                        Navbar
+                        Newsroom
                     </Typography>
                 </Toolbar>
             </AppBar>

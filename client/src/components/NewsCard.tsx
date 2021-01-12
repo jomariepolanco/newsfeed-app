@@ -19,11 +19,17 @@ interface Props {
 
 const NewsCard: React.FC<Props> = ({news}) => {
 
+    const toggleModal = () => {
+        console.log('toggle')
+    }
+
     const classes = useStyles()
     return (
         <div>
-           <img src={news.urlToImage} alt={news.title} />
-           <GridListTileBar title={news.title} titlePosition="top" actionIcon={<IconButton aria-label={`start ${news.title}`} className={classes.icon}><StarBorderIcon/></IconButton>} actionPosition="left" className={classes.titleBar} />
+            <a href={news.url} target="_onblank">
+                <img src={news.urlToImage} alt={news.title} />
+            </a> 
+                <GridListTileBar title={news.title} titlePosition="top" actionIcon={<IconButton aria-label={`start ${news.title}`} className={classes.icon}><StarBorderIcon/></IconButton>} actionPosition="left" className={classes.titleBar} />
 
         </div>
     )

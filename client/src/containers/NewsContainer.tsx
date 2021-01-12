@@ -1,7 +1,6 @@
 import { createStyles, GridList, GridListTile, makeStyles, Theme } from '@material-ui/core';
-import React, { Component, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import NewsCard from '../components/NewsCard'
-import SearchForm from '../components/SearchForm'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
@@ -45,14 +44,11 @@ export default function NewsContainer() {
     const classes = useStyles()
 
     return (
-        <>
-        <SearchForm />
         <div className={classes.root}>
             <GridList cellHeight={200} spacing={1} className={classes.gridList}>
                 {renderNewsCards()}
 
             </GridList>
         </div>
-        </>
     )
 }
