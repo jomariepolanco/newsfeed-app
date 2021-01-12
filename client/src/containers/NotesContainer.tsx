@@ -3,7 +3,11 @@ import React, {useEffect, useState} from 'react'
 import CreateNoteForm from '../components/CreateNoteForm';
 import NoteCard from '../components/NoteCard'
 
-export default function NotesContainer() {
+interface Props {
+    user: {id: number, name: string};
+}
+
+const NotesContainer: React.FC<Props> = ({user}) => {
     const [notes, setNotes] = useState([]);
 
     const getNotes = () => {
@@ -24,7 +28,9 @@ export default function NotesContainer() {
     return (
         <div>
             {renderNoteCards()}
-            <CreateNoteForm />
+            <CreateNoteForm user={user} />
         </div>
     )
 }
+
+export default NotesContainer;

@@ -2,8 +2,13 @@ import { Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControlL
 import { Label } from '@material-ui/icons';
 import React, {ChangeEvent, useState} from 'react'
 import FormInput from './FormInput';
+import Alert from '@material-ui/lab/Alert'
 
-const CreateNoteForm = () => {
+interface Props {
+    user: {id: number, name: string}
+}
+
+const CreateNoteForm: React.FC<Props> = ({user}) => {
 
     const [open, setOpen] = useState(false)
     const [text, setText] = useState('')
@@ -24,15 +29,19 @@ const CreateNoteForm = () => {
 
     const submitHandler = (event: any) => {
         event.preventDefault()
-        const note = {text, articleTitle, userId: 25}
-        fetch('/api/notes', {
-            method: "POST",
-            headers: {"Content-type": "application/json"},
-            body: JSON.stringify(note)
-        })
-        .then(r => r.json())
-        .then(data => console.log('success'
-        , data))
+        if (user.id !== 0) {
+            const note = {text, articleTitle, userId: user.id}
+            fetch('/api/notes', {
+                method: "POST",
+                headers: {"Content-type": "application/json"},
+                body: JSON.stringify(note)
+            })
+            .then(r => r.json())
+            .then(data => console.log('success'
+            , data))
+        } else {
+            alert('You must log in to post a note!')
+        }
     }
 
     return (

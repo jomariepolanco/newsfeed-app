@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
 function App() {
   const [news, setNews] = useState("null");
   const [category, setCategory] = useState('general')
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({id: 0, name: ''})
 
   const getNews = (category: string) => {
     fetch(`/api/news/${category}`)
@@ -59,7 +59,7 @@ function App() {
   }
 
   const classes = useStyles()
-  return ( 
+  return (  
     <div className={classes.root}>
       <Navbar />
       <Switch>
@@ -78,7 +78,7 @@ function App() {
            </Grid>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
-              <Route path='/notes' component={NotesContainer}/>
+              <Route path='/notes' render={() => <NotesContainer user={user}/>} />
             </Paper>
           </Grid>
         </Grid>

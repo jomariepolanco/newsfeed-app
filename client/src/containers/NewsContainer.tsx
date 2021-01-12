@@ -35,11 +35,10 @@ const NewsContainer: React.FC<Props> = ({news}) => {
 
     const classes = useStyles()
 
-    return (
+    return ( 
         <div className={classes.root}>
             <GridList cellHeight={200} spacing={1} className={classes.gridList}>
                 {renderNewsCards()}
-
             </GridList>
         </div>
     )
