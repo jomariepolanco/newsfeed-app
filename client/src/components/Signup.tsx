@@ -1,5 +1,5 @@
 import { Button, Container, Typography } from '@material-ui/core';
-import React from 'react'
+import React, {useState, ChangeEvent} from 'react'
 import FormInput from './FormInput';
 
 interface Props {
@@ -7,10 +7,15 @@ interface Props {
 }
 
 const Signup: React.FC<Props> = ({handleSignup}) => {
+    const [name, setName] = useState('')
 
     const submitHandler = (e: any) => {
         e.preventDefault()
-        handleSignup(e.target.name.value)
+        handleSignup(name)
+    }
+
+    const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        setName(event.target.value)
     }
 
     return (
@@ -19,7 +24,7 @@ const Signup: React.FC<Props> = ({handleSignup}) => {
             <div>
                 <form onSubmit={submitHandler}>
                     <Typography>Name</Typography>
-                    <FormInput type="text" name="name" onChangeHandler={null} />
+                    <FormInput type="text" name="name" value={name}onChangeHandler={changeHandler} />
                     <br /><br />
                     <Button variant="outlined" color="primary" type="submit">Sign Up</Button>
                 </form>

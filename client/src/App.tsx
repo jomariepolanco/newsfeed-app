@@ -49,6 +49,7 @@ const App: React.FC<Props> = ({history}) => {
       if (loggedInUser) {
         setUser(loggedInUser)
         history.push('/')
+        localStorage.setItem('id', loggedInUser.id)
       } else {
         alert('Please try again!')
       }
@@ -72,6 +73,7 @@ const App: React.FC<Props> = ({history}) => {
     }
   }
 
+  console.log(user)
   const classes = useStyles()
   return (  
     <div className={classes.root}>
@@ -90,9 +92,9 @@ const App: React.FC<Props> = ({history}) => {
               <Route exact path='/' render={() => <NewsContainer news={news}/>} />
             </Paper>
            </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} >
             <Paper className={classes.paper}>
-              <Route path='/notes' render={() => <NotesContainer user={user}/>} />
+              <Route path='/' render={() => <NotesContainer user={user}/>} />
             </Paper>
           </Grid>
         </Grid>

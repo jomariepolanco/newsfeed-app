@@ -24,7 +24,7 @@ const NotesContainer: React.FC<Props> = ({user}) => {
         return [...notes].map(note => <Grid item xs={4} spacing={2}><NoteCard note={note} /></Grid>)
     }
   
-    console.log(notes)
+    console.log(user)
     return (
         <div>
             {renderNoteCards()}

@@ -14,9 +14,9 @@ const CreateNoteForm: React.FC<Props> = ({user}) => {
     const [text, setText] = useState('')
     const [articleTitle, setArticleTitle] = useState('')
 
-    const changeHandler = (value: string, name: string) => {
-        if (name === "text") setText(value)
-        if (name === "articleTitle") setArticleTitle(value)
+    const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        if (event.target.name === "text") setText(event.target.value)
+        if (event.target.name === "articleTitle") setArticleTitle(event.target.value)
     }
 
     const openClickHandler = () => {
@@ -29,19 +29,18 @@ const CreateNoteForm: React.FC<Props> = ({user}) => {
 
     const submitHandler = (event: any) => {
         event.preventDefault()
-        if (user.id !== 0) {
-            const note = {text, articleTitle, userId: user.id}
-            fetch('/api/notes', {
-                method: "POST",
-                headers: {"Content-type": "application/json"},
-                body: JSON.stringify(note)
-            })
-            .then(r => r.json())
-            .then(data => console.log('success'
-            , data))
-        } else {
-            alert('You must log in to post a note!')
-        }
+        console.log(user)
+        const id = localStorage.getItem('id')
+        const note = {text, articleTitle, userId: id}
+        console.log(note)
+            // fetch('/api/notes', {
+            //     method: "POST",
+            //     headers: {"Content-type": "application/json"},
+            //     body: JSON.stringify(note)
+            // })
+            // .then(r => r.json())
+            // .then(data => console.log('success'
+            // , data))
     }
 
     return (
@@ -52,9 +51,9 @@ const CreateNoteForm: React.FC<Props> = ({user}) => {
             <DialogTitle>Add a Note</DialogTitle>
                 <DialogContent>
                     <Typography>Article Name</Typography>
-                    <FormInput type="text" onChangeHandler={changeHandler} name="articleTitle" />
+                    <FormInput value={articleTitle} type="text" onChangeHandler={changeHandler} name="articleTitle" />
                     <Typography>Text</Typography>
-                    <FormInput type="text" onChangeHandler={changeHandler} name="text" />
+                    <FormInput type="text" onChangeHandler={changeHandler} name="text" value={text} />
                 </DialogContent>
                 <DialogActions>
                     <Button type="submit" color="primary" variant="outlined" onClick={closeClickHandler}>Submit</Button>

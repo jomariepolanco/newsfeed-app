@@ -3,7 +3,8 @@ import React, {ChangeEvent, useState} from 'react'
 interface Props {
     type: string;
     name: string;
-    onChangeHandler: null | ((input: string, name: string) => void); 
+    onChangeHandler: null | ((event: ChangeEvent<HTMLInputElement>) => void); 
+    value: string | null;
 };
 
 
@@ -14,7 +15,7 @@ const FormInput: React.FC<Props> = ({type, onChangeHandler, name}) => {
     const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value)
         if (onChangeHandler){
-            onChangeHandler(value, event.target.name)
+            onChangeHandler(event)
         }
     }
 

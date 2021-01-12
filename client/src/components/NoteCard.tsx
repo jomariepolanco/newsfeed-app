@@ -8,6 +8,7 @@ interface Props {
 }
 
 const NoteCard: React.FC<Props> = ({note}) => {
+    console.log(note)
     return (
         <Card raised variant="outlined">
             <h3>{note.articleTitle}</h3>
