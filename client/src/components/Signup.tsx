@@ -7,9 +7,15 @@ interface Props {
 }
 
 const Signup: React.FC<Props> = ({handleSignup}) => {
+
+    const submitHandler = (e: any) => {
+        e.preventDefault()
+        handleSignup(e.target.name.value)
+    }
+
     return (
         <div>
-            <form>
+            <form onSubmit={submitHandler}>
                 <Typography>Name</Typography>
                 <FormInput type="text" name="name" onChangeHandler={null} />
                 <br /><br />
