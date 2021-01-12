@@ -59,7 +59,7 @@ function App() {
   }
 
   const classes = useStyles()
-  return (
+  return ( 
     <div className={classes.root}>
       <Navbar />
       <Switch>
