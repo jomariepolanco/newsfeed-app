@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
 function App() {
   const [news, setNews] = useState("null");
   const [category, setCategory] = useState('general')
+  const [user, setUser] = useState({})
 
   const getNews = (category: string) => {
     fetch(`/api/news/${category}`)
@@ -32,6 +33,27 @@ function App() {
     useEffect(() => {
       getNews(category)
     }, [category])
+
+  const handleLogin = (name: string) => {
+    fetch('/api/users')
+    .then(r => r.json())
+    .then(users => {
+      const loggedInUser = users.find((user: {id: number, name: string}) => user.name === name)
+      setUser(loggedInUser)
+    })
+  }
+
+  const handleSignup = (name: string) => {
+    fetch('/api/users', {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({name: name})
+    })
+    .then(r => r.json())
+    .then(user => setUser(user))
+  }
 
   const classes = useStyles()
   return (
