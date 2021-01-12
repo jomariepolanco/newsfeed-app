@@ -56,16 +56,20 @@ const App: React.FC<Props> = ({history}) => {
   }
 
   const handleSignup = (name: string) => {
-    fetch('/api/users', {
-      method: "POST", 
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({name: name})
-    })
-    .then(r => r.json())
-    .then(user => setUser(user))
-    history.push('/')
+    if (name !== ''){
+      fetch('/api/users', {
+        method: "POST", 
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({name: name})
+      })
+      .then(r => r.json())
+      .then(user => setUser(user))
+      history.push('/')
+    } else {
+      alert('Name must exist to sign up!')
+    }
   }
 
   const classes = useStyles()

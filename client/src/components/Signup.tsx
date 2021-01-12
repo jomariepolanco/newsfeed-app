@@ -1,4 +1,4 @@
-import { Button, Typography } from '@material-ui/core';
+import { Button, Container, Typography } from '@material-ui/core';
 import React from 'react'
 import FormInput from './FormInput';
 
@@ -14,14 +14,17 @@ const Signup: React.FC<Props> = ({handleSignup}) => {
     }
 
     return (
-        <div>
-            <form onSubmit={submitHandler}>
-                <Typography>Name</Typography>
-                <FormInput type="text" name="name" onChangeHandler={null} />
-                <br /><br />
-                <Button variant="outlined" color="primary" type="submit">Sign Up</Button>
-            </form>
-        </div>
+        <Container fixed>
+            <h1>Sign Up</h1>
+            <div>
+                <form onSubmit={submitHandler}>
+                    <Typography>Name</Typography>
+                    <FormInput type="text" name="name" onChangeHandler={null} />
+                    <br /><br />
+                    <Button variant="outlined" color="primary" type="submit">Sign Up</Button>
+                </form>
+            </div>
+        </Container>
     )
 }
 

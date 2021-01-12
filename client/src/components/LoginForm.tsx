@@ -1,4 +1,4 @@
-import { Button, Typography } from '@material-ui/core';
+import { Box, Button, Container, Typography } from '@material-ui/core';
 import React, { ChangeEvent } from 'react'
 import FormInput from './FormInput'
 
@@ -13,6 +13,8 @@ const LoginForm: React.FC<Props> = ({handleLogin}) =>{
     }
 
     return (
+        <Container fixed>
+            <h1>Login</h1>
         <div>
             <form onSubmit={submitHandler}>
                 <Typography>Name</Typography>
@@ -21,6 +23,8 @@ const LoginForm: React.FC<Props> = ({handleLogin}) =>{
                 <Button variant="outlined" color="primary" type="submit">Login</Button>
             </form>
         </div>
+
+        </Container>
     )
 }
 

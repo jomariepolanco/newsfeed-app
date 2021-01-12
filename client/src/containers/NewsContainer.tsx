@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         backgroundColor: theme.palette.background.paper
     },
     gridList: {
-        width: 1000,
+        width: 900,
         height: 750
     },
 })
@@ -37,7 +37,7 @@ const NewsContainer: React.FC<Props> = ({news}) => {
 
     return ( 
         <div className={classes.root}>
-            <GridList cellHeight={200} spacing={1} className={classes.gridList}>
+            <GridList cellHeight={400} spacing={1} className={classes.gridList}>
                 {renderNewsCards()}
             </GridList>
         </div>
