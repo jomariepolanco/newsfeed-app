@@ -22,7 +22,7 @@ export default function NewsContainer() {
     const [news, setNews] = React.useState<string[]>([]);
 
     const getNews = () => {
-        fetch('/api/all_news')
+        fetch('/api/news/general')
             .then((result) => result.json())
             .then((response) => setNews(response));
     };

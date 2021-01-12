@@ -10,49 +10,56 @@ export class NewsController {
 
     async business(){
         const response = await this.newsapi.v2.topHeadlines({
-            category: 'business'
+            category: 'business',
+            country: 'us'
         })
         return response.articles
     }
 
     async entertainment(){
         const response = await this.newsapi.v2.topHeadlines({
-            category: 'entertainment'
+            category: 'entertainment',
+            country: 'us'
         })
         return response.articles
     }
 
     async general(){
         const response = await this.newsapi.v2.topHeadlines({
-            category: 'general'
+            category: 'general',
+            country: 'us'
         })
         return response.articles
     }
 
     async health(){
         const response = await this.newsapi.v2.topHeadlines({
-            category: 'health'
+            category: 'health',
+            country: 'us'
         })
         return response.articles
     }
 
     async science(){
         const response = await this.newsapi.v2.topHeadlines({
-            category: 'science'
+            category: 'science',
+            country: 'us'
         })
         return response.articles
     }
 
     async sports(){
         const response = await this.newsapi.v2.topHeadlines({
-            category: 'sports'
+            category: 'sports',
+            country: 'us'
         })
         return response.articles
     }
 
     async technology(){
         const response = await this.newsapi.v2.topHeadlines({
-            category: 'technology'
+            category: 'technology',
+            country: 'us'
         })
         return response.articles
     }
