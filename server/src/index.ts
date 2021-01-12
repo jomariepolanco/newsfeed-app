@@ -79,9 +79,10 @@ app.use(function (req, res, next) {
     });
   });
 
-    app.listen(port, () => {
-        console.log(`Listening at http://localhost:${port}`);
-    });
+  app.listen(port, () => {
+      console.log(`Listening at http://localhost:${port}`);
+  });
+  
   await connection.manager.save(connection.manager.create(User, {
     name:'Aang'
   }))

@@ -1,4 +1,3 @@
-import classes from '*.module.css'
 import { createStyles, GridListTileBar, IconButton, makeStyles } from '@material-ui/core'
 import StarBorderIcon from '@material-ui/icons/StarBorder'
 import React from 'react'
