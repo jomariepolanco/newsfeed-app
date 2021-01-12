@@ -1,5 +1,6 @@
 import { Button } from '@material-ui/core';
 import React from 'react'
+import CreateNoteForm from '../components/CreateNoteForm';
 import NoteCard from '../components/NoteCard'
 
 export default function NotesContainer() {
@@ -26,8 +27,8 @@ export default function NotesContainer() {
     return (
         <div>
             <Button variant="outlined" color="primary" onClick={notesClickHandler}>See Notes</Button>
-            <Button variant="outlined" color="primary" onClick={toggleModal}>Add Note</Button>
             {renderNoteCards}
+            <CreateNoteForm />
         </div>
     )
 }

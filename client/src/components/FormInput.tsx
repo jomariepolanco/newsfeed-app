@@ -2,24 +2,25 @@ import React, {ChangeEvent, useState} from 'react'
 
 interface Props {
     type: string;
-    onChangeHandler: (input: string) => void;
+    name: string;
+    onChangeHandler: null | ((input: string, name: string) => void); 
+};
 
-}
 
-const FormInput: React.FC<Props> = ({type, onChangeHandler}) => {
+const FormInput: React.FC<Props> = ({type, onChangeHandler, name}) => {
 
     const [value, setValue] = useState('')
 
     const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value)
         if (onChangeHandler){
-            onChangeHandler(value)
+            onChangeHandler(value, event.target.name)
         }
     }
 
     return (
         <>
-            <input type={type} value={value} name="input" onChange={changeHandler}  />
+            <input type={type} value={value} name={name} onChange={changeHandler}  />
         </>
     )
 }
