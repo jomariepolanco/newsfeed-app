@@ -40,7 +40,7 @@ function App() {
     fetch('/api/users')
     .then(r => r.json())
     .then(users => {
-      const loggedInUser = users.find((user: {id: number, name: string}) => user.name === name)
+      const loggedInUser = users.find((user: {id: number, name: string}) => user.name.toLowerCase() === name.toLowerCase())
       setUser(loggedInUser)
     })
   }

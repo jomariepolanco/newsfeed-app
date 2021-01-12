@@ -5,11 +5,16 @@ import FormInput from './FormInput'
 interface Props {
     handleLogin: (name: string) => void;
 }
-const LoginForm: React.FC<Props> = () =>{
+const LoginForm: React.FC<Props> = ({handleLogin}) =>{
+
+    const submitHandler = (e: any) => {
+        e.preventDefault()
+        handleLogin(e.target.name.value)
+    }
 
     return (
         <div>
-            <form>
+            <form onSubmit={submitHandler}>
                 <Typography>Name</Typography>
                 <FormInput type="text" name="name" onChangeHandler={null} />
                 <br /><br />
