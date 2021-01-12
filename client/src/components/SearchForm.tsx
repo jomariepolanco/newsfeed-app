@@ -1,9 +1,15 @@
 import React from 'react'
 
-export default function SearchForm() {
+interface Props {
+    getNews: () => void;
+}
+
+const SearchForm: React.FC<Props> = ({getNews}) => {
     return (
         <div>
             search form
         </div>
     )
 }
+
+export default SearchForm;

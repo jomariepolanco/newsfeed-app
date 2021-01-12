@@ -1,5 +1,5 @@
 import { createStyles, GridList, GridListTile, makeStyles, Theme } from '@material-ui/core';
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import NewsCard from '../components/NewsCard'
 import SearchForm from '../components/SearchForm'
 
@@ -28,6 +28,10 @@ export default function NewsContainer() {
             .then((response) => setNews(response));
     };
 
+    useEffect(() => {
+        getNews()
+    }, [])
+
     const renderNewsCards = () => {
         return [...news].map((article, idx) => {
             return(
@@ -42,7 +46,7 @@ export default function NewsContainer() {
 
     return (
         <div className={classes.root}>
-            <SearchForm getNews={getNews}/>
+            <SearchForm />
             <GridList cellHeight={200} spacing={1} className={classes.gridList}>
                 {renderNewsCards()}
 
