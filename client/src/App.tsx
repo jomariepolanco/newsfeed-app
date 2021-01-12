@@ -7,6 +7,7 @@ import 'fontsource-roboto';
 import { createStyles, Grid, makeStyles, Paper, Theme } from '@material-ui/core';
 import LoginForm from './components/LoginForm';
 import Signup from './components/Signup';
+import {Switch, Route} from 'react-router-dom'
 
 const useStyles = makeStyles((theme: Theme) => 
   createStyles({
@@ -60,26 +61,28 @@ function App() {
   const classes = useStyles()
   return (
     <div className={classes.root}>
-        <Navbar />
-        <LoginForm handleLogin={handleLogin} />
-        <Signup handleSignup={handleSignup} />
+      <Navbar />
+      <Switch>
+        <Route path='/login' render={() => <LoginForm handleLogin={handleLogin} />} />
+        <Route path='/signup' render={() => <Signup handleSignup={handleSignup} />} />
         <Grid container spacing={0}>
           <Grid item md={12}>
             <Paper className={classes.paper}>
-              <SearchForm setCategory={setCategory}/>
+              <Route path='/news' render={() => <SearchForm setCategory={setCategory}/>} />
             </Paper>
           </Grid>
           <Grid item md={12}>
             <Paper className={classes.paper}>
-              <NewsContainer news={news}/>
+              <Route path='/news' render={() => <NewsContainer news={news}/>} />
             </Paper>
           </Grid>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
-              <NotesContainer />
+              <Route path='/notes' component={NotesContainer}/>
             </Paper>
           </Grid>
         </Grid>
+      </Switch>
     </div>
   );
 }
