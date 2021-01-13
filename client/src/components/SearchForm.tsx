@@ -1,6 +1,16 @@
-import { Button, FormControl, FormLabel, RadioGroup } from "@material-ui/core";
+import { Button, FormControl, FormLabel, RadioGroup, Grid, Paper, makeStyles, createStyles, Theme} from "@material-ui/core";
 import React, { ChangeEvent, useState } from "react";
 import CheckBoxes from "./CheckBoxes";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: "center",
+      color: theme.palette.text.secondary,
+    },
+  })
+);
 
 interface Props {
   setCategory: (value: string) => void;
@@ -22,15 +32,19 @@ const SearchForm: React.FC<Props> = ({ setCategory }) => {
       "Science",
       "Sports",
       "Technology",
-    ].map((category) => <CheckBoxes category={category} />);
+    ].map((category) => <CheckBoxes key={category}category={category} />);
   };
 
   const submitHandler = (event: any) => {
     event.preventDefault();
     setCategory(value);
   };
+
+  const classes = useStyles()
   return (
     <>
+    <Grid item md={12}>
+        <Paper className={classes.paper}>
       <form onSubmit={submitHandler}>
         <FormControl component="fieldset">
           <FormLabel
@@ -57,6 +71,8 @@ const SearchForm: React.FC<Props> = ({ setCategory }) => {
           </Button>
         </FormControl>
       </form>
+      </Paper>
+    </Grid>
     </>
   );
 };

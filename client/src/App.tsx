@@ -8,7 +8,6 @@ import {
   createStyles,
   Grid,
   makeStyles,
-  Paper,
   Theme,
 } from "@material-ui/core";
 import LoginForm from "./components/LoginForm";
@@ -101,32 +100,18 @@ const App: React.FC<Props> = ({ history }) => {
           path="/signup"
           render={() => <Signup handleSignup={handleSignup} />}
         />
-        <Grid container spacing={0}>
-          <Grid item md={12}>
-            <Paper className={classes.paper}>
-              <Route
-                exact
-                path="/"
-                render={() => <SearchForm setCategory={setCategory} />}
-              />
-            </Paper>
-          </Grid>
-          <Grid item md={12}>
-            <Paper className={classes.paper}>
-              <Route
-                exact
-                path="/"
-                render={() => <NewsContainer news={news} />}
-              />
-            </Paper>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper className={classes.paper}>
-              <Route path="/" render={() => <NotesContainer user={user} />} />
-            </Paper>
-          </Grid>
-        </Grid>
-      </Switch>
+          <Route
+            path="/"
+            render={() => 
+              <>
+            <SearchForm setCategory={setCategory} />
+            <NewsContainer news={news} />
+        
+          <NotesContainer user={user} /> 
+          </>}
+          />
+          
+          </Switch>
     </div>
   );
 };

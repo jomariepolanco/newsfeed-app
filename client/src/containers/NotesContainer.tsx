@@ -1,7 +1,17 @@
-import { Grid } from "@material-ui/core";
+import { Grid, Paper, makeStyles, createStyles, Theme } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import CreateNoteForm from "../components/CreateNoteForm";
 import NoteCard from "../components/NoteCard";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: "center",
+      color: theme.palette.text.secondary,
+    },
+  })
+);
 
 interface Props {
   user: { id: number; name: string };
@@ -21,9 +31,9 @@ const NotesContainer: React.FC<Props> = ({ user }) => {
   }, []);
 
   const renderNoteCards = () => {
-    return [...notes].map((note) => (
+    return [...notes].map((note: {id: number, text: string, user: {id: number, name: string}, articleTitle: string}) => (
       <Grid item xs={4}>
-        <NoteCard
+        <NoteCard key={note.id}
           deleteNoteHandler={deleteNoteHandler}
           user={user}
           note={note}
@@ -58,7 +68,10 @@ const NotesContainer: React.FC<Props> = ({ user }) => {
     getNotes();
   };
 
+  const classes = useStyles()
   return (
+    <Grid item xs={12}>
+    <Paper className={classes.paper}>
     <div>
       <h3>Notes from fellow users!</h3>
       <Grid container spacing={3}>
@@ -67,6 +80,8 @@ const NotesContainer: React.FC<Props> = ({ user }) => {
       <br />
       <CreateNoteForm createNoteHandler={createNoteHandler} user={user} />
     </div>
+    </Paper>
+  </Grid>
   );
 };
 

@@ -4,6 +4,8 @@ import {
   GridListTile,
   makeStyles,
   Theme,
+  Grid,
+  Paper
 } from "@material-ui/core";
 import React from "react";
 import NewsCard from "../components/NewsCard";
@@ -20,6 +22,11 @@ const useStyles = makeStyles((theme: Theme) =>
     gridList: {
       width: 900,
       height: 750,
+    },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: "center",
+        color: theme.palette.text.secondary,
     },
   })
 );
@@ -41,11 +48,17 @@ const NewsContainer: React.FC<Props> = ({ news }) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <GridList cellHeight={300} spacing={1} className={classes.gridList}>
-        {renderNewsCards()}
-      </GridList>
-    </div>
+    <Grid container spacing={0}>
+    <Grid item md={12}>
+        <Paper className={classes.paper}>
+        <div className={classes.root}>
+            <GridList cellHeight={300} spacing={1} className={classes.gridList}>
+            {renderNewsCards()}
+            </GridList>
+        </div>
+    </Paper>
+  </Grid>
+  </Grid>
   );
 };
 
