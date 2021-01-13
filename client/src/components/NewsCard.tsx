@@ -22,7 +22,7 @@ const NewsCard: React.FC<Props> = ({news}) => {
     return (
         <div>
             <a href={news.url} target="_onblank">
-                <img src={news.urlToImage} alt={news.title} />
+                <img style={{maxWidth: '100%'}} src={news.urlToImage} alt={news.title} />
             </a> 
                 <GridListTileBar title={news.title} titlePosition="bottom" actionIcon={<IconButton aria-label={`start ${news.title}`} className={classes.icon}><NotificationsNoneSharpIcon/></IconButton>} actionPosition="left" className={classes.titleBar} />
 

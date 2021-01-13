@@ -44,10 +44,10 @@ const CreateNoteForm: React.FC<Props> = ({user, createNoteHandler}) => {
                     <Typography>Article Name</Typography>
                     <FormInput value={articleTitle} type="text" onChangeHandler={changeHandler} name="articleTitle" />
                     <Typography>Text</Typography>
-                    <FormInput type="text" onChangeHandler={changeHandler} name="text" value={text} />
+                    <FormInput type="textarea" onChangeHandler={changeHandler} name="text" value={text} />
                 </DialogContent>
                 <DialogActions>
-                    <Button type="submit" color="primary" variant="outlined" onClick={closeClickHandler}>Submit</Button>
+                    <Button type="submit" style={{backgroundColor: '#9147ff', color: '#ffffff'}}  variant="contained" onClick={closeClickHandler}>Submit</Button>
                 </DialogActions>
             </form>
         </Dialog>

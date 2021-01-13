@@ -26,7 +26,7 @@ const Signup: React.FC<Props> = ({handleSignup}) => {
                     <Typography>Name</Typography>
                     <FormInput type="text" name="name" value={name}onChangeHandler={changeHandler} />
                     <br /><br />
-                    <Button variant="outlined" color="primary" type="submit">Sign Up</Button>
+                    <Button variant="contained" style={{backgroundColor: '#9147ff', color: '#ffffff'}} type="submit">Sign Up</Button>
                 </form>
             </div>
         </Container>

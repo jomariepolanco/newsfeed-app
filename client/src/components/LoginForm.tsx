@@ -26,7 +26,7 @@ const LoginForm: React.FC<Props> = ({handleLogin}) =>{
                 <Typography>Name</Typography>
                 <FormInput value={name} type="text" name="name" onChangeHandler={onNameChangeHandler} />
                 <br /><br />
-                <Button variant="outlined" color="primary" type="submit">Login</Button>
+                <Button variant="contained" style={{backgroundColor: '#9147ff', color: '#ffffff'}} type="submit">Login</Button>
             </form>
         </div>
 
