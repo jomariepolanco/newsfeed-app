@@ -1,6 +1,8 @@
 # Submission Requirements
 ## Project Description
 - A high level architectural overview of your web application. e.g. names, relationships and purposes of all components and relevant data models
+![alt_text](file:///Users/joeyp/Desktop/Newsroom-backend-models.png "Newsroom Backend Models")
+
 - Brief description of the architectural design pattern that you leveraged (MVC, MVP, MVVM)
 - Screenshots of each View and descriptions of the overall user flow as well as any place that you made distinct design decisions.  (Screenshots can be taken via any screenshot capture application or native methods).
 
@@ -23,7 +25,8 @@ Please list examples of how your project meets the following requirements below:
     - I implmented a MVC architectural pattern. See above for more details.
 
 - [ x ] Use of a [REST API](https://medium.com/@arteko/the-best-way-to-use-rest-apis-in-swift-95e10696c980).
-    - [NEWS API](https://newsapi.org/)
+    - I implemented the NEWS API and created a RESTful server with the information:
+        - [NEWS API](https://newsapi.org/)
 
 - [ x ] Usage of at least 5 UI components from the [material-ui/@core](https://material-ui.com/) library (if you are not using React, a comparable UI library is acceptable)
     - I used many components from Material-UI. Here are the most prominent 5:
