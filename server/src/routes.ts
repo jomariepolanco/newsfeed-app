@@ -27,11 +27,6 @@ export const Routes = [
         controller: NoteController, action: 'all' 
     }, 
     {
-        method: 'get',
-        route: '/api/notes/:id',
-        controller: NoteController, action: 'one'
-    },
-    {
         method: 'post',
         route: '/api/notes',
         controller: NoteController, action: 'save'
