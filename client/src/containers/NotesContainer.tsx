@@ -21,7 +21,7 @@ const NotesContainer: React.FC<Props> = ({user}) => {
     }, [])
 
     const renderNoteCards = () => {
-        return [...notes].map(note => <Grid item xs={4} spacing={2}><NoteCard deleteNoteHandler={deleteNoteHandler} note={note} /></Grid>)
+        return [...notes].map(note => <Grid item xs={4} style={{flex: 1}}><NoteCard deleteNoteHandler={deleteNoteHandler} note={note} /></Grid>)
     }
   
     const createNoteHandler = (note: {text: string, userId: number, articleTitle: string}) => {
@@ -48,7 +48,10 @@ const NotesContainer: React.FC<Props> = ({user}) => {
 
     return (
         <div>
-            {renderNoteCards()}
+            <Grid container spacing={10}>
+                {renderNoteCards()}
+            </Grid>
+            <br />
             <CreateNoteForm createNoteHandler={createNoteHandler} user={user} />
         </div>
     )
