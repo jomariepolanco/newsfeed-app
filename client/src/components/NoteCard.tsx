@@ -1,22 +1,19 @@
-import { Button, Card, Paper } from '@material-ui/core';
-import { Note } from '@material-ui/icons';
+import { Button, Card } from '@material-ui/core';
 import React from 'react'
 
 
 interface Props {
     note: {id: number, articleTitle: string, text: string, user: {id: number, name: string}};
+    deleteNoteHandler: (id: number) => void;
 }
 
-const NoteCard: React.FC<Props> = ({note}) => {
+const NoteCard: React.FC<Props> = ({note, deleteNoteHandler}) => {
     
     
     const deleteClickHandler = () => {
-        fetch(`/api/notes/${note.id}`, {
-            method: "DELETE",
-            headers: {'Content-Type': 'application/json'}
-        })
+        deleteNoteHandler(note.id)
     }
-    
+
     return (
         <Card raised variant="outlined">
             <h3>{note.articleTitle}</h3>

@@ -21,7 +21,7 @@ const NotesContainer: React.FC<Props> = ({user}) => {
     }, [])
 
     const renderNoteCards = () => {
-        return [...notes].map(note => <Grid item xs={4} spacing={2}><NoteCard note={note} /></Grid>)
+        return [...notes].map(note => <Grid item xs={4} spacing={2}><NoteCard deleteNoteHandler={deleteNoteHandler} note={note} /></Grid>)
     }
   
     const createNoteHandler = (note: {text: string, userId: number, articleTitle: string}) => {
@@ -36,6 +36,14 @@ const NotesContainer: React.FC<Props> = ({user}) => {
         } else {
             alert('Log in to write a note!')
         }
+    }
+
+    const deleteNoteHandler = (id: number) => {
+        fetch(`/api/notes/${id}`, {
+            method: "DELETE",
+            headers: {'Content-Type': 'application/json'}
+        })
+        getNotes()
     }
 
     return (
