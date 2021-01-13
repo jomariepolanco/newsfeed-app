@@ -7,15 +7,31 @@
 
 ## Project Requirements
 Please list examples of how your project meets the following requirements below:
-- [ ] Use a modern JS Library/Framework like React, Angular, etc. We suggest using React.js.
+- [ x ] Use a modern JS Library/Framework like React, Angular, etc. We suggest using React.js.
+    - I used React for the frontend.
 
-- [ ] Create an application that can be interacted with in a minimum of three different ways by the user.
+- [ x ] Create an application that can be interacted with in a minimum of three different ways by the user.
+    1. Users can choose from 1 of 7 categories of news to see.
+    2. Users can create a note to post on the site.
+    3. Users can delete their notes.
+    4. Users can login or sign up (user must be logged in to create or delete a note).
 
-- [ ] Use of at least one Service.
+- [ x ] Use of at least one Service.
+    - As of Sunday, January 10th, this requirement is no longer needed.
 
-- [ ] The usage of a specified architectural pattern (MVC, MVP, MVVM,  etc.)
+- [ x ] The usage of a specified architectural pattern (MVC, MVP, MVVM,  etc.)
+    - I implmented a MVC architectural pattern. See above for more details.
 
-- [ ] Use of a [REST API](https://medium.com/@arteko/the-best-way-to-use-rest-apis-in-swift-95e10696c980).
-- [ ] Usage of at least 5 UI components from the [material-ui/@core](https://material-ui.com/) library (if you are not using React, a comparable UI library is acceptable)
+- [ x ] Use of a [REST API](https://medium.com/@arteko/the-best-way-to-use-rest-apis-in-swift-95e10696c980).
+    - [NEWS API](https://newsapi.org/)
 
-- [ ] An example of a reusable UI component that you have created and used in the app. This should be different than the 5 UI components from the vendor library.
+- [ x ] Usage of at least 5 UI components from the [material-ui/@core](https://material-ui.com/) library (if you are not using React, a comparable UI library is acceptable)
+    - I used many components from Material-UI. Here are the most prominent 5:
+        1. Grid and GridList
+        2. Button
+        3. Radio Group
+        4. Dialog
+        5. Container and Paper
+
+- [ x ] An example of a reusable UI component that you have created and used in the app. This should be different than the 5 UI components from the vendor library.
+    - I implemented a custom Form Input used in all forms: Login Form, Signup Form, and Create Note Form.

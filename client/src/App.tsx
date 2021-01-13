@@ -6,7 +6,6 @@ import SearchForm from "./components/SearchForm";
 import "fontsource-roboto";
 import {
   createStyles,
-  Grid,
   makeStyles,
   Theme,
 } from "@material-ui/core";
@@ -110,7 +109,7 @@ const App: React.FC<Props> = ({ history }) => {
           <NotesContainer user={user} /> 
           </>}
           />
-          
+
           </Switch>
     </div>
   );
