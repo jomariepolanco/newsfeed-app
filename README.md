@@ -29,6 +29,7 @@ npm install
 npm run schema:sync
 npm start
 ```
+Server uses a postgresql database. You may have to use ```createdb newsroom-backend``` if schema:sync does not work.
 The server is running on:<br />
  http://localhost:8080/api/users<br />
  http://localhost:8080/api/notes<br />
