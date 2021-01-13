@@ -1,7 +1,6 @@
 # Submission Requirements
 ## Project Description
-- A high level architectural overview of your web application. e.g. names, relationships and purposes of all components and relevant data models
-
+Architectural Overview of Application
 ### Backend Models
 ![Newsroom-backend-models](/images/Newsroom-backend-models.png)
 
@@ -24,19 +23,37 @@ The news container is the most prominent part of the application. This is where 
 The notes container is the next most prominent part. This is where users can add comments about random articles they read in the News Container. The Notes Container renders each note as it's own card. Logged in users will see a button to be able to delete their own cards. To add a note, a user clicks on the 'Add Note' Button that opens up a Modal with the form to create a new Note. The form uses the reusable FormInput component. This persists and shows on the page immediately after hitting 'Submit'. 
 
 #### Components
-**Navbar**
+##### Navbar
 The navigation bar consists of a 'logo' and buttons to Login, Signup and the main page, News.
 
-**Login/Signup** 
+##### Login/Signup
 These forms use the reusable FormInput component. After logging in, users have the functionality of creating and deleting notes.
 
-**News Search Form**
+##### News Search Form
 This form is rendered in the App because I wanted it to have functionality over the News Container, rather than be within it. You could argue that the search form should be a component of the News Container. With this form, users can choose what category of news they would like to see. The articles change the moment users click 'Submit'.
 
-**News Card and Note Card**
+##### News Card and Note Card
 These cards render individual instances of their respective container. The News Card also, when clicked, shows a Modal with the actual news article. That way, users can click back to the app and have not lost their spot on the application.
 
-- Brief description of the architectural design pattern that you leveraged (MVC, MVP, MVVM)
+##
+Architectural Design Pattern
+### MVC
+For this app, I implemented Object-oriented Programming and the Model-View-Controller design patterns.
+
+#### Model
+![Notes-model](/images/Notes-model.png)
+
+The models are the 'engine'. Here is where the app's data and logic are. My models are Note, User, and News Articles (API). These are on my server. I used TypeORM to build the models with separation of concerns as well as create the relationship between User and Note.
+
+#### View
+![News-view](/images/News-view.png)
+The view is my component tree. Each component is responsible for taking the information gathered from the models and display them the way they see fit. The models don't know about the Notes Container and the Notes Container doesn't have the models' attributes memorized.
+
+#### Controller
+![User-controller](/images/User-controller.png)
+The models and views don't know anything about each other, so I implemented controllers to be the liason between them. Again, using TypeORM, I created controllers for each model (Note, User and News Articles) to get the information from the model to the view.
+
+
 - Screenshots of each View and descriptions of the overall user flow as well as any place that you made distinct design decisions.  (Screenshots can be taken via any screenshot capture application or native methods).
 
 

@@ -17,3 +17,5 @@ export class Note extends BaseEntity {
     user: User;
 
 }
+
+
