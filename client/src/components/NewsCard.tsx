@@ -57,7 +57,7 @@ const NewsCard: React.FC<Props> = ({ news }) => {
       />
       <Button onClick={openClickHandler}>View Article</Button>
       <Dialog fullScreen open={open} onClose={closeClickHandler}>
-        <AppBar className={classes.appBar}>
+        <AppBar style={{backgroundColor: "#9147ff"}} className={classes.appBar}>
           <Toolbar>
             <IconButton
               edge="start"
