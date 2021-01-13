@@ -1,7 +1,7 @@
 # Submission Requirements
 ## Project Description
 - A high level architectural overview of your web application. e.g. names, relationships and purposes of all components and relevant data models
-![alt_text](file:///Users/joeyp/Desktop/Newsroom-backend-models.png "Newsroom Backend Models")
+![Newsroom-backend-models](/images/Newsroom-backend-models.png)
 
 - Brief description of the architectural design pattern that you leveraged (MVC, MVP, MVVM)
 - Screenshots of each View and descriptions of the overall user flow as well as any place that you made distinct design decisions.  (Screenshots can be taken via any screenshot capture application or native methods).
