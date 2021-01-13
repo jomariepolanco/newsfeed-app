@@ -72,7 +72,7 @@ createConnection().then(async connection => {
     await connection.manager.save(connection.manager.create(User, {
       name:'Appa'
     }))
-    
+
     //Note Seeds
     await connection.manager.save(connection.manager.create(Note, {
       text: "Interesting read! Don't think I can part ways with my iPhone though!",
@@ -100,6 +100,8 @@ createConnection().then(async connection => {
       user: await User.findOne({id: 3})
     }))
 
+
+    
     app.listen(port, () => {
       console.log(`Listening at http://localhost:${port}`);
      });
