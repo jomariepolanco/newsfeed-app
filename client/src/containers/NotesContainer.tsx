@@ -24,11 +24,24 @@ const NotesContainer: React.FC<Props> = ({user}) => {
         return [...notes].map(note => <Grid item xs={4} spacing={2}><NoteCard note={note} /></Grid>)
     }
   
-    console.log(user)
+    const createNoteHandler = (note: {text: string, userId: number, articleTitle: string}) => {
+        if (user.id !== 0) {
+            fetch('/api/notes', {
+                method: "POST",
+                headers: {"Content-type": "application/json"},
+                body: JSON.stringify(note)
+            })
+            .then(r => r.json())
+            .then(data => getNotes())
+        } else {
+            alert('Log in to write a note!')
+        }
+    }
+
     return (
         <div>
             {renderNoteCards()}
-            <CreateNoteForm user={user} />
+            <CreateNoteForm createNoteHandler={createNoteHandler} user={user} />
         </div>
     )
 }

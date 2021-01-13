@@ -5,10 +5,11 @@ import FormInput from './FormInput';
 import Alert from '@material-ui/lab/Alert'
 
 interface Props {
-    user: {id: number, name: string}
+    user: {id: number, name: string};
+    createNoteHandler: (note: {text: string, userId: number, articleTitle: string}) => void;
 }
 
-const CreateNoteForm: React.FC<Props> = ({user}) => {
+const CreateNoteForm: React.FC<Props> = ({user, createNoteHandler}) => {
 
     const [open, setOpen] = useState(false)
     const [text, setText] = useState('')
@@ -29,18 +30,8 @@ const CreateNoteForm: React.FC<Props> = ({user}) => {
 
     const submitHandler = (event: any) => {
         event.preventDefault()
-        console.log(user)
-        const id = localStorage.getItem('id')
-        const note = {text, articleTitle, userId: id}
-        console.log(note)
-            // fetch('/api/notes', {
-            //     method: "POST",
-            //     headers: {"Content-type": "application/json"},
-            //     body: JSON.stringify(note)
-            // })
-            // .then(r => r.json())
-            // .then(data => console.log('success'
-            // , data))
+        const note = {text, articleTitle, userId: user.id}
+        createNoteHandler(note)
     }
 
     return (
