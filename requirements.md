@@ -17,9 +17,11 @@ My backend consists of 3 models.
 My frontend consists of 2 main containers and multiple components. 
 #### Containers
 **News Container**
+![News-container](/images/News-container.gif)
 The news container is the most prominent part of the application. This is where the newsfeed is. It renders the News Card component that has the information for each individual article.
 
 **Notes Container**
+![Notes-container](/images/Notes-container.png)
 The notes container is the next most prominent part. This is where users can add comments about random articles they read in the News Container. The Notes Container renders each note as it's own card. Logged in users will see a button to be able to delete their own cards. To add a note, a user clicks on the 'Add Note' Button that opens up a Modal with the form to create a new Note. The form uses the reusable FormInput component. This persists and shows on the page immediately after hitting 'Submit'. 
 
 #### Components
