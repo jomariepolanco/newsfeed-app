@@ -4,7 +4,10 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  Typography
+  Typography,
+  makeStyles,
+  Theme,
+  createStyles
 } from "@material-ui/core";
 import React, { ChangeEvent, useState } from "react";
 import FormInput from "./FormInput";
@@ -17,6 +20,16 @@ interface Props {
     articleTitle: string;
   }) => void;
 }
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    button: {
+      backgroundColor: "#9147ff",
+      color: "#ffffff",
+      fontWeight: "bold"
+    }
+  
+  }))
 
 const CreateNoteForm: React.FC<Props> = ({ user, createNoteHandler }) => {
   const [open, setOpen] = useState(false);
@@ -43,15 +56,13 @@ const CreateNoteForm: React.FC<Props> = ({ user, createNoteHandler }) => {
     createNoteHandler(note);
   };
 
+  const classes = useStyles()
+
   return (
     <>
       <Button
         variant="contained"
-        style={{
-          backgroundColor: "#9147ff",
-          color: "#ffffff",
-          fontWeight: "bold",
-        }}
+        className={classes.button}
         onClick={openClickHandler}
       >
         Add Note
@@ -82,8 +93,7 @@ const CreateNoteForm: React.FC<Props> = ({ user, createNoteHandler }) => {
           <DialogActions>
             <Button
               type="submit"
-              style={{ backgroundColor: "#9147ff", color: "#ffffff" }}
-              variant="contained"
+              className={classes.button}
               onClick={closeClickHandler}
             >
               Submit

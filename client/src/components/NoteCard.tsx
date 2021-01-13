@@ -9,6 +9,11 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
       color: theme.palette.text.secondary,
     },
+    button: {
+      color: "#ffffff",
+      backgroundColor: "#9147ff",
+      fontWeight: "bold"
+    }
   })
 );
 
@@ -34,11 +39,7 @@ const NoteCard: React.FC<Props> = ({ note, deleteNoteHandler, user }) => {
         <Button
           variant="contained"
           onClick={deleteClickHandler}
-          style={{
-            color: "#ffffff",
-            backgroundColor: "#9147ff",
-            fontWeight: "bold",
-          }}
+          className={classes.button}
         >
           Delete
         </Button>

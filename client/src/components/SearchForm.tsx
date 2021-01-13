@@ -9,6 +9,14 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
       color: theme.palette.text.secondary,
     },
+    button: {
+      color: "#ffffff", 
+      backgroundColor: "#9147ff"
+    }, 
+    label: {
+      color: "#6e22b4", 
+      fontWeight: "bolder"
+    }
   })
 );
 
@@ -48,7 +56,7 @@ const SearchForm: React.FC<Props> = ({ setCategory }) => {
       <form onSubmit={submitHandler}>
         <FormControl component="fieldset">
           <FormLabel
-            style={{ color: "#6e22b4", fontWeight: "bolder" }}
+            className={classes.label}
             component="legend"
           >
             Choose a Category
@@ -63,7 +71,7 @@ const SearchForm: React.FC<Props> = ({ setCategory }) => {
           </RadioGroup>
           <Button
             size={"large"}
-            style={{ color: "#ffffff", backgroundColor: "#9147ff" }}
+            className={classes.button}
             type="submit"
             variant="outlined"
           >
