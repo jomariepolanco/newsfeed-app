@@ -10,10 +10,8 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
-import NotificationsNoneSharpIcon from "@material-ui/icons/NotificationsNoneSharp";
-import React, {useState} from "react";
-import News from "./News";
-import CloseIcon from '@material-ui/icons/Close';
+import React, { useState } from "react";
+import CloseIcon from "@material-ui/icons/Close";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -24,12 +22,12 @@ const useStyles = makeStyles((theme: Theme) =>
       color: "rgba(255, 255, 255)",
     },
     appBar: {
-      position: 'relative'
-  },
-  title: {
+      position: "relative",
+    },
+    title: {
       marginLeft: theme.spacing(2),
-      flex: 1
-  }
+      flex: 1,
+    },
   })
 );
 
@@ -38,39 +36,51 @@ interface Props {
 }
 
 const NewsCard: React.FC<Props> = ({ news }) => {
+  const [open, setOpen] = useState(false);
 
-    const [open, setOpen] = useState(false)
+  const openClickHandler = () => {
+    setOpen(true);
+  };
 
-    const openClickHandler = () => {
-        setOpen(true)
-    }
-
-    const closeClickHandler = () => {
-        setOpen(false)
-    }
+  const closeClickHandler = () => {
+    setOpen(false);
+  };
 
   const classes = useStyles();
   return (
     <div>
-       <img style={{ maxWidth: "100%", cursor: 'context-menu' }} src={news.urlToImage} alt={news.title} onClick={openClickHandler}/> 
-                <Button onClick={openClickHandler}>View Article</Button>  
-            <Dialog fullScreen open={open} onClose={closeClickHandler} >
-                <AppBar className={classes.appBar}>
-                    <Toolbar>
-                        <IconButton edge="start" color="inherit" onClick={closeClickHandler}>
-                            <CloseIcon />
-                        </IconButton>
-                        <Typography>
-                          {news.title}
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-                <img style={{maxWidth:'100%'}} src={news.urlToImage} alt={news.title} />
-                <h1>{news.title}</h1>
-                <h3>By: {news.author}</h3>
-                <p>{news.content}</p>
-                <a href={news.url} target="_blank" rel="noreferrer">Read More...</a>
-            </Dialog>
+      <img
+        style={{ maxWidth: "100%", cursor: "context-menu" }}
+        src={news.urlToImage}
+        alt={news.title}
+        onClick={openClickHandler}
+      />
+      <Button onClick={openClickHandler}>View Article</Button>
+      <Dialog fullScreen open={open} onClose={closeClickHandler}>
+        <AppBar className={classes.appBar}>
+          <Toolbar>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={closeClickHandler}
+            >
+              <CloseIcon />
+            </IconButton>
+            <Typography>{news.title}</Typography>
+          </Toolbar>
+        </AppBar>
+        <img
+          style={{ maxWidth: "100%" }}
+          src={news.urlToImage}
+          alt={news.title}
+        />
+        <h1>{news.title}</h1>
+        <h3>By: {news.author}</h3>
+        <p>{news.content}</p>
+        <a href={news.url} target="_blank" rel="noreferrer">
+          Read More...
+        </a>
+      </Dialog>
       <GridListTileBar
         title={news.title}
         titlePosition="top"

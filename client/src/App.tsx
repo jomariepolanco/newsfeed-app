@@ -4,18 +4,14 @@ import NewsContainer from "./containers/NewsContainer";
 import NotesContainer from "./containers/NotesContainer";
 import SearchForm from "./components/SearchForm";
 import "fontsource-roboto";
-import {
-  createStyles,
-  makeStyles,
-  Theme,
-} from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core";
 import LoginForm from "./components/LoginForm";
 import Signup from "./components/Signup";
 import {
   Switch,
   Route,
   RouteComponentProps,
-  withRouter
+  withRouter,
 } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -99,18 +95,18 @@ const App: React.FC<Props> = ({ history }) => {
           path="/signup"
           render={() => <Signup handleSignup={handleSignup} />}
         />
-          <Route
-            path="/"
-            render={() => 
-              <>
-            <SearchForm setCategory={setCategory} />
-            <NewsContainer news={news} />
-        
-          <NotesContainer user={user} /> 
-          </>}
-          />
+        <Route
+          path="/"
+          render={() => (
+            <>
+              <SearchForm setCategory={setCategory} />
+              <NewsContainer news={news} />
 
-          </Switch>
+              <NotesContainer user={user} />
+            </>
+          )}
+        />
+      </Switch>
     </div>
   );
 };
