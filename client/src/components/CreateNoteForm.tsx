@@ -36,7 +36,7 @@ const CreateNoteForm: React.FC<Props> = ({user, createNoteHandler}) => {
 
     return (
         <>
-        <Button variant="outlined" color="primary" onClick={openClickHandler}>Add Note</Button>
+        <Button variant="contained" style={{backgroundColor: '#9147ff', color: '#ffffff', fontWeight: 'bold'}} onClick={openClickHandler}>Add Note</Button>
         <Dialog open={open} onClose={closeClickHandler} aria-labelledby="form-dialog-title">
             <form onSubmit={submitHandler}>
             <DialogTitle>Add a Note</DialogTitle>
