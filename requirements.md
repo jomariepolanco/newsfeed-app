@@ -1,5 +1,6 @@
 # Submission Requirements
 ## Project Description
+![App](/images/App.gif)
 Architectural Overview of Application
 ### Backend Models
 ![Newsroom-backend-models](/images/Newsroom-backend-models.png)
@@ -15,27 +16,43 @@ My backend consists of 3 models.
 ![Newsroom-component-tree](/images/Newsroom-component-tree.png)
 
 My frontend consists of 2 main containers and multiple components. 
-#### Containers
-**News Container**
+## Containers
+
+### News Container
 ![News-container](/images/News-container.gif)
 The news container is the most prominent part of the application. This is where the newsfeed is. It renders the News Card component that has the information for each individual article.
 
-**Notes Container**
+The News Container scrolls separately from the rest of the main page. This was done so that the search form is still in sight when viewing the articles. If a user finds no articles interesting in a particular category, it is very easy for them to get back to the Search Form to find a new category to search through.
+
+### Notes Container
 ![Notes-container](/images/Notes-container.png)
 The notes container is the next most prominent part. This is where users can add comments about random articles they read in the News Container. The Notes Container renders each note as it's own card. Logged in users will see a button to be able to delete their own cards. To add a note, a user clicks on the 'Add Note' Button that opens up a Modal with the form to create a new Note. The form uses the reusable FormInput component. This persists and shows on the page immediately after hitting 'Submit'. 
 
-#### Components
-##### Navbar
+The notes are in card form rather than comments. This way, they are more readable and become more of interest to the user.
+
+## Components
+
+### Navbar
+![Navbar](/images/Navbar.png)
+![Routing](/images/Routing.png)
 The navigation bar consists of a 'logo' and buttons to Login, Signup and the main page, News.
 
-##### Login/Signup
+### Login/Signup
+![Signup/Login](/images/Signup:login.png)
 These forms use the reusable FormInput component. After logging in, users have the functionality of creating and deleting notes.
 
-##### News Search Form
+### News Search Form
+![News-Search](/images/NewsSearchForm.png)
 This form is rendered in the App because I wanted it to have functionality over the News Container, rather than be within it. You could argue that the search form should be a component of the News Container. With this form, users can choose what category of news they would like to see. The articles change the moment users click 'Submit'.
 
-##### News Card and Note Card
+Design played an important role here. Users must be able to choose a category before the News Container shows just in case they want to switch the category first. I made the categories Radio Buttons so only one can be selected at a time, and kept it big and taking up most of the screen for readability.
+
+### News Card and Note Card
+![NewsCard](/images/NewsCard.png)
+![NoteCard](/images/NoteCard.png)
 These cards render individual instances of their respective container. The News Card also, when clicked, shows a Modal with the actual news article. That way, users can click back to the app and have not lost their spot on the application.
+
+The News Card into a Full Screen modal was another design decision that had to do with accessibility and readability. At first, I just had the news card showing the picture and the title. A user could click on the image to go to the full article's page. Adding in more information into a modal lets users see the content better; if they really want to read the article they can click "Read More..." to continue. If not, users can exit out of the modal and back to the application to view more articles.
 
 ##
 Architectural Design Pattern
@@ -54,9 +71,6 @@ The view is my component tree. Each component is responsible for taking the info
 #### Controller
 ![User-controller](/images/User-controller.png)
 The models and views don't know anything about each other, so I implemented controllers to be the liason between them. Again, using TypeORM, I created controllers for each model (Note, User and News Articles) to get the information from the model to the view.
-
-
-- Screenshots of each View and descriptions of the overall user flow as well as any place that you made distinct design decisions.  (Screenshots can be taken via any screenshot capture application or native methods).
 
 
 ## Project Requirements
