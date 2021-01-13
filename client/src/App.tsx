@@ -7,7 +7,7 @@ import 'fontsource-roboto';
 import { createStyles, Grid, makeStyles, Paper, Theme } from '@material-ui/core';
 import LoginForm from './components/LoginForm';
 import Signup from './components/Signup';
-import {Switch, Route, RouteComponentProps,  withRouter} from 'react-router-dom'
+import {Switch, Route, RouteComponentProps,  withRouter, Redirect} from 'react-router-dom'
 
 const useStyles = makeStyles((theme: Theme) => 
   createStyles({
@@ -73,8 +73,8 @@ const App: React.FC<Props> = ({history}) => {
     }
   }
 
-  console.log(user)
   const classes = useStyles()
+  
   return (  
     <div className={classes.root}>
       <Navbar />

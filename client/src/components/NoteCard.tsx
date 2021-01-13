@@ -1,6 +1,7 @@
 import { Button, Card, Paper } from '@material-ui/core';
 import React from 'react'
 import {makeStyles, Theme, createStyles} from '@material-ui/core'
+import userEvent from '@testing-library/user-event';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     paper: {
@@ -14,13 +15,22 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 interface Props {
     note: {id: number, articleTitle: string, text: string, user: {id: number, name: string}};
     deleteNoteHandler: (id: number) => void;
+    user: {id: number, name: string};
 }
 
-const NoteCard: React.FC<Props> = ({note, deleteNoteHandler}) => {
+const NoteCard: React.FC<Props> = ({note, deleteNoteHandler, user}) => {
     
     
     const deleteClickHandler = () => {
         deleteNoteHandler(note.id)
+    }
+
+    const renderDeleteButton = () => {
+        if (note.user.id === user.id){
+            return <Button variant="contained" onClick={deleteClickHandler} style={{color: '#ffffff', backgroundColor: '#9147ff', fontWeight: 'bold'}}>Delete</Button>
+        } else {
+            return null
+        }
     }
 
     const classes = useStyles()
@@ -30,7 +40,7 @@ const NoteCard: React.FC<Props> = ({note, deleteNoteHandler}) => {
             <h3>{note.articleTitle}</h3>
             <p>{note.text}</p>
             <h5>- {note.user.name}</h5>
-            <Button variant="contained" onClick={deleteClickHandler} style={{color: '#ffffff', backgroundColor: '#9147ff', fontWeight: 'bold'}}>Delete</Button>
+            {renderDeleteButton()}
         </Paper>
     )
 }
