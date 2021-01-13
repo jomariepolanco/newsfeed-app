@@ -29,7 +29,7 @@ npm install
 npm run schema:sync
 npm start
 ```
-The server is running on:
+The server is running on:<br />
  http://localhost:8080/api/users<br />
  http://localhost:8080/api/notes<br />
  http://localhost:8080/api/news/{category}<br />
