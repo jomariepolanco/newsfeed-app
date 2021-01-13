@@ -1,7 +1,40 @@
 # Submission Requirements
 ## Project Description
 - A high level architectural overview of your web application. e.g. names, relationships and purposes of all components and relevant data models
+
+### Backend Models
 ![Newsroom-backend-models](/images/Newsroom-backend-models.png)
+
+My backend consists of 3 models. 
+1. The news articles, which are coming from an external API and have no true relationship with the user. The API gives us a lot of information: author, title, source name, description, URL, image, published date and time, and content.
+
+2. The users, which consist of a unique ID and aa unique name. A user has many notes.
+
+3. The notes, which belong to the user. They consist of a unique ID, text, user ID, and an article title.
+
+### Frontend Component Tree
+![Newsroom-component-tree](/images/Newsroom-component-tree.png)
+
+My frontend consists of 2 main containers and multiple components. 
+#### Containers
+**News Container**
+The news container is the most prominent part of the application. This is where the newsfeed is. It renders the News Card component that has the information for each individual article.
+
+**Notes Container**
+The notes container is the next most prominent part. This is where users can add comments about random articles they read in the News Container. The Notes Container renders each note as it's own card. Logged in users will see a button to be able to delete their own cards. To add a note, a user clicks on the 'Add Note' Button that opens up a Modal with the form to create a new Note. The form uses the reusable FormInput component. This persists and shows on the page immediately after hitting 'Submit'. 
+
+#### Components
+**Navbar**
+The navigation bar consists of a 'logo' and buttons to Login, Signup and the main page, News.
+
+**Login/Signup** 
+These forms use the reusable FormInput component. After logging in, users have the functionality of creating and deleting notes.
+
+**News Search Form**
+This form is rendered in the App because I wanted it to have functionality over the News Container, rather than be within it. You could argue that the search form should be a component of the News Container. With this form, users can choose what category of news they would like to see. The articles change the moment users click 'Submit'.
+
+**News Card and Note Card**
+These cards render individual instances of their respective container. The News Card also, when clicked, shows a Modal with the actual news article. That way, users can click back to the app and have not lost their spot on the application.
 
 - Brief description of the architectural design pattern that you leveraged (MVC, MVP, MVVM)
 - Screenshots of each View and descriptions of the overall user flow as well as any place that you made distinct design decisions.  (Screenshots can be taken via any screenshot capture application or native methods).
