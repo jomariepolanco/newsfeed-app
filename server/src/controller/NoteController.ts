@@ -11,9 +11,6 @@ export class NoteController {
     return notes;
   }
 
-  async one(req: Request, res: Response, next: NextFunction) {
-    return this.noteRepo.findOne(req.params.id);
-  }
 
   async save(req: Request, res: Response, next: NextFunction) {
       const {text, userId, articleTitle} = req.body 
@@ -31,3 +28,5 @@ export class NoteController {
       return this.noteRepo.remove(note)
   }
 }
+
+//did not make a /notes/:id controller because not using in the front end. 

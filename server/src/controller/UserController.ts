@@ -19,4 +19,4 @@ export class UserController {
   }
 }
 
-
+//Did not create a DELETE controller because not using in frontend. When that functionality is needed, it can easily be added.
