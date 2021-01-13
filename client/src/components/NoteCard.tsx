@@ -1,48 +1,63 @@
-import { Button, Card, Paper } from '@material-ui/core';
-import React from 'react'
-import {makeStyles, Theme, createStyles} from '@material-ui/core'
-import userEvent from '@testing-library/user-event';
+import { Button, Paper } from "@material-ui/core";
+import React from "react";
+import { makeStyles, Theme, createStyles } from "@material-ui/core";
 
-const useStyles = makeStyles((theme: Theme) => createStyles({
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
     paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        color: theme.palette.text.secondary
-    }
-    })
-)
+      padding: theme.spacing(2),
+      textAlign: "center",
+      color: theme.palette.text.secondary,
+    },
+  })
+);
 
 interface Props {
-    note: {id: number, articleTitle: string, text: string, user: {id: number, name: string}};
-    deleteNoteHandler: (id: number) => void;
-    user: {id: number, name: string};
+  note: {
+    id: number;
+    articleTitle: string;
+    text: string;
+    user: { id: number; name: string };
+  };
+  deleteNoteHandler: (id: number) => void;
+  user: { id: number; name: string };
 }
 
-const NoteCard: React.FC<Props> = ({note, deleteNoteHandler, user}) => {
-    
-    
-    const deleteClickHandler = () => {
-        deleteNoteHandler(note.id)
+const NoteCard: React.FC<Props> = ({ note, deleteNoteHandler, user }) => {
+  const deleteClickHandler = () => {
+    deleteNoteHandler(note.id);
+  };
+
+  const renderDeleteButton = () => {
+    if (note.user.id === user.id) {
+      return (
+        <Button
+          variant="contained"
+          onClick={deleteClickHandler}
+          style={{
+            color: "#ffffff",
+            backgroundColor: "#9147ff",
+            fontWeight: "bold",
+          }}
+        >
+          Delete
+        </Button>
+      );
+    } else {
+      return null;
     }
+  };
 
-    const renderDeleteButton = () => {
-        if (note.user.id === user.id){
-            return <Button variant="contained" onClick={deleteClickHandler} style={{color: '#ffffff', backgroundColor: '#9147ff', fontWeight: 'bold'}}>Delete</Button>
-        } else {
-            return null
-        }
-    }
+  const classes = useStyles();
 
-    const classes = useStyles()
-
-    return (
-        <Paper variant="outlined" className={classes.paper}>
-            <h3>{note.articleTitle}</h3>
-            <p>{note.text}</p>
-            <h5>- {note.user.name}</h5>
-            {renderDeleteButton()}
-        </Paper>
-    )
-}
+  return (
+    <Paper variant="outlined" className={classes.paper}>
+      <h3>{note.articleTitle}</h3>
+      <p>{note.text}</p>
+      <h5>- {note.user.name}</h5>
+      {renderDeleteButton()}
+    </Paper>
+  );
+};
 
 export default NoteCard;
